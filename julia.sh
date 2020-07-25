@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
 set -eu
 
-docker run -it --rm -v "$PWD":/usr/myapp -w /usr/myapp julia "$@"
+export SRC="$(pwd)"
+
+cd "$(dirname "$0")/docker"
+
+COMMAND="${1:-run}"
+
+make "$COMMAND"
